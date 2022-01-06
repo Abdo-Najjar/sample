@@ -3,7 +3,8 @@
 
 <head>
     <title>Product</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+    <script src="{{ asset('/js/app.js') }}" defer></script>
 </head>
 
 <body>
@@ -26,7 +27,7 @@
                     <h1>{{ $product->name }} ({{ $product->price }} $) </h1>
                     <p> {{ $product->description }} </p>
                     @foreach ($product->colors as $color)
-                        <div data-color="{{ optional($product->media->first())->getUrl() }}" class="color-circle"
+                        <div data-color="{{ optional($color->media->first())->getUrl() }}" class="color-circle"
                             style="background-color: {{ $color->value }}">
                         </div>
                     @endforeach
@@ -55,7 +56,6 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('/scripts.js')}} "></script>
 </body>
 
 </html>
