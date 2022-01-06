@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div data-price="{{ $product->price }}" class="product-info">
-                    <h1>{{ $product->name }} ({{ $product->price }} $) </h1>
+                    <h1>{{ $product->name }} (<span id="product-price">{{ $product->price }}</span>) <span>$</span> </h1>
                     <p> {{ $product->description }} </p>
                     @foreach ($product->colors as $color)
                         <div data-color="{{ optional($color->media->first())->getUrl() }}" class="color-circle"
@@ -35,14 +35,14 @@
                     @if ($product->sizes()->count())
                         <h3>Sizes</h3>
                         @foreach ($product->sizes as $size)
-                            <span class="size">{{ $size->name }}</span>
+                            <span data-price="{{ $size->price }}" class="size size-price">({{ $size->price }} $) {{ $size->name }}</span>
                         @endforeach
                     @endif
 
                     @if ($product->capacities()->count())
                         <h3>Capacities</h3>
                         @foreach ($product->capacities as $capacity)
-                            <span class="size"> {{ $capacity->name }} </span>
+                            <span  class="size"> {{ $capacity->name }} </span>
                         @endforeach
                     @endif
 

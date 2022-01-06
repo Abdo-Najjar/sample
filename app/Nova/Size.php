@@ -5,6 +5,7 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -30,7 +31,7 @@ class Size extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name'
+        'id', 'name', 'price'
     ];
 
     /**
@@ -47,6 +48,8 @@ class Size extends Resource
             Text::make(__('Name'), 'name')->sortable()->rules('required', 'min:3', 'max:255'),
 
             BelongsTo::make(__('Product'), 'product', Product::class)->sortable(),
+
+            Number::make(__('Price'), 'price')->sortable()->min(1)->rules('required', 'numeric', 'min:1'),
         ];
     }
 

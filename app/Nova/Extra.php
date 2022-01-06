@@ -52,7 +52,6 @@ class Extra extends Resource
             BelongsTo::make(__('Product'), 'product', Product::class)->sortable(),
 
             Number::make(__('Price'), 'price')->sortable()->min(1)->rules('required', 'numeric', 'min:1'),
-
         ];
     }
 
