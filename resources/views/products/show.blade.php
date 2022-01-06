@@ -23,7 +23,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="product-info">
+                <div data-price="{{ $product->price }}" class="product-info">
                     <h1>{{ $product->name }} ({{ $product->price }} $) </h1>
                     <p> {{ $product->description }} </p>
                     @foreach ($product->colors as $color)
@@ -49,9 +49,20 @@
                     @if ($product->extras()->count())
                         <h3>Extras</h3>
                         @foreach ($product->extras as $extra)
-                            <span class="size">({{ $extra->price }} $) {{ $extra->name }} </span>
+                            <span data-price="{{ $extra->price }}" class="size extra">({{ $extra->price }} $)
+                                {{ $extra->name }} </span>
                         @endforeach
                     @endif
+
+                    <div>
+                        <h4>Total Price</h4>
+                        <span id="total" class="size">
+
+                        </span>
+                        <span>
+                            $
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

@@ -2072,6 +2072,13 @@ document.querySelectorAll('.color-circle').forEach(function (element) {
     document.querySelector('.img-preview').src = element.getAttribute('data-color');
   });
 });
+document.querySelector('#total').innerHTML = parseInt(document.querySelector('.product-info').getAttribute('data-price'));
+document.querySelectorAll('.extra').forEach(function (element) {
+  element.addEventListener('click', function () {
+    var totalPrice = parseInt(element.getAttribute('data-price')) + parseInt(document.querySelector('.product-info').getAttribute('data-price'));
+    document.querySelector('#total').innerHTML = totalPrice;
+  });
+});
 
 /***/ }),
 
